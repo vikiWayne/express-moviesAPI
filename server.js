@@ -3,7 +3,7 @@ dotenv.config({ path: './.env' });
 
 import app from './app.js';
 
-const PORT = 8000;
+const PORT = process.env.PORT ?? 8000;
 
 console.log(app.get('env'));
 

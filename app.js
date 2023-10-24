@@ -14,6 +14,4 @@ const loggerService = (req, res, next) => {
 
 // GET - api/movies
 app.use('/api/v1.0', loggerService, v1Routes);
-// app.use("/api/v1.0/movie", loggerService, movieRoutes);
-
 export default app;
