@@ -5,8 +5,6 @@ import app from './app.js';
 
 const PORT = process.env.PORT ?? 8000;
 
-console.log(app.get('env'));
-
 app.listen(PORT, () =>
     console.log(`Server started and listening on port ${PORT}`)
 );

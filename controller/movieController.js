@@ -21,17 +21,6 @@ export const checkIdMiddleware = (req, res, next, movieId) => {
     next();
 };
 
-export const validateBodyMiddleware = (req, res, next) => {
-    if (!req.body.name || !req.body.releaseYear) {
-        return res.status(400).json({
-            status: 'failed',
-            message: 'Not a valid movie data',
-        });
-    }
-
-    next();
-};
-
 // Route handler functions
 
 export const getAllMovies = (req, res) => {
