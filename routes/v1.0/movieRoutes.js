@@ -6,15 +6,19 @@ import {
     getMovieById,
     updateMovie,
     checkIdMiddleware,
-    validateBodyMiddleware,
 } from '../../controller/movieController.js';
+import { validateRequest } from '../../middleware/validateRequest.js';
+import { schemas } from '../../schemas/index.js';
 
 const router = express.Router();
 
 // find movieIndex by id - runs when movieId is received in request
 router.param('movieId', checkIdMiddleware);
 
-router.route('/').get(getAllMovies).post(validateBodyMiddleware, createMovie);
+router
+    .route('/')
+    .get(getAllMovies)
+    .post(validateRequest(schemas.movie), createMovie);
 
 router
     .route('/:movieId')
