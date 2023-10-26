@@ -1,5 +1,6 @@
 import express from 'express';
 import v1Routes from './routes/v1.0/index.js';
+import { corsMiddleware } from './middleware/corsMiddleware.js';
 
 const app = express();
 
@@ -13,19 +14,7 @@ const loggerService = (req, res, next) => {
 };
 
 // CORS headers
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader(
-        'Access-Control-Allow-Methods',
-        'GET, POST, PUT, PATCH, DELETE'
-    );
-    res.setHeader(
-        'Access-Control-Allow-Headers',
-        'Content-Type, Authorization'
-    );
-
-    next();
-});
+app.use(corsMiddleware);
 
 // GET - api/movies
 app.use('/api/v1.0', loggerService, v1Routes);
